@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Algorithm &#8212; Dr.Hadi Sadoghi Yazdi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/Algorithm';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Training, Testing, Techniques" href="ModelTrainTest.html" />
+    <link rel="prev" title="Data" href="Buildingblocks_AI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Home_Page.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-light" alt="Dr.Hadi Sadoghi Yazdi - Home"/>
+    <script>document.write(`<img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-dark" alt="Dr.Hadi Sadoghi Yazdi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Home_Page.html">
+                    Welcome to my personal Website!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Courses.html">Courses</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Whats_AI.html">AI Essentials: Applications Across Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Inside_AI.html">Inside AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Buildingblocks_AI.html">Data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModelTrainTest.html">Training, Testing, Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Learning.html">Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EnsembleLearning.html">Ensemble, Fusion, Combining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BayesianLearning_1.html">Bayesian Learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../Blog.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact_Me.html">Contact Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About_Me.html">About Me</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git/issues/new?title=Issue%20on%20page%20%2Fcourses/Algorithm.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courses/Algorithm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Algorithm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amazing-note">Amazing Note:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-active-learning-is-useful"><strong>Why Active Learning is Useful</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit Scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-classification">Image classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-clustering-news-aggregation">Text Clustering: News Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-price-data">Zero Price Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-unlabeled-data"><strong>Benefits of Unlabeled Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-crawl-for-unlabeled-data"><strong>Why We Crawl for Unlabeled Data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unlabel-data-and-some-algorithms">Unlabel Data and some algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">ChatGPT</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithm">
+<h1>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h1>
+<p><strong>Supervised Learning:</strong></p>
+<ul class="simple">
+<li><p>Algorithms that learn from labeled data to make predictions or decisions.</p></li>
+</ul>
+<p><strong>Unsupervised Learning:</strong></p>
+<ul class="simple">
+<li><p>Algorithms that identify patterns or groupings in unlabeled data.</p></li>
+<li><p>Examples: K-Means Clustering</p></li>
+</ul>
+<p><strong>Semi-supervised Learning:</strong></p>
+<ul class="simple">
+<li><p>Algorithms that use both labeled and unlabeled data to identify patterns.</p></li>
+</ul>
+<section id="supervised-learning">
+<h2>Supervised Learning<a class="headerlink" href="#supervised-learning" title="Link to this heading">#</a></h2>
+<p>Supervised learning is expensive, especially in terms of data labeling, as it requires large labeled datasets to train models effectively.</p>
+<p><img alt="Expensive Supervised Learning" src="../_images/ExpensiveSupervisedLearning.jpg" /></p>
+<p>Labeling <em><strong>MRI</strong></em> scans is particularly expensive due to the need for expert radiologists to accurately annotate the images, which requires significant time and specialized knowledge</p>
+<p><img alt="MRI Labeling" src="../_images/MRI_Labeling_Expensive.jpg" /></p>
+<section id="amazing-note">
+<h3>Amazing Note:<a class="headerlink" href="#amazing-note" title="Link to this heading">#</a></h3>
+<p><strong>Active learning</strong> is particularly valuable in contexts like labeling MRI scans because it can significantly reduce the amount of labeled data needed to achieve high model performance.</p>
+<section id="why-active-learning-is-useful">
+<h4><strong>Why Active Learning is Useful</strong><a class="headerlink" href="#why-active-learning-is-useful" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Efficient Labeling</strong>:</p>
+<ul class="simple">
+<li><p><strong>Targeted Annotation</strong>: Active learning identifies the <strong><em>most informative samples for labeling</em></strong>, focusing expert resources on the most uncertain or representative cases. This reduces the total number of images that need to be labeled compared to randomly selecting samples.</p></li>
+<li><p><strong>Cost Reduction</strong>: By minimizing the amount of data requiring expert annotation, active learning lowers the overall cost associated with labeling, which is crucial in fields like medical imaging where expert time is expensive.</p></li>
+</ul>
+</li>
+<li><p><strong>Improved Model Performance</strong>:</p>
+<ul class="simple">
+<li><p><strong>Increased Accuracy</strong>: Active learning helps improve model performance more effectively with <em>fewer labeled</em> examples by ensuring that the labeled data includes the most challenging and <em>informative</em> samples. This leads to better generalization and accuracy in the model.
+(Spam is not an informative sample)</p></li>
+</ul>
+</li>
+<li><p><strong>Faster Model Training</strong>:</p>
+<ul class="simple">
+<li><p><strong>Efficient Learning</strong>: Active learning accelerates the training process by strategically selecting the most valuable data points, leading to faster convergence and reduced time for model development.</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="Active Learning" src="../_images/ActiveLearning.JPG" /></p>
+<p><strong>Example:</strong></p>
+</section>
+</section>
+<section id="credit-scoring">
+<h3>Credit Scoring<a class="headerlink" href="#credit-scoring" title="Link to this heading">#</a></h3>
+<p>Credit scoring is the process of determining how probably a person or organization is to repay a loan.</p>
+<p><strong>Feature Extraction:</strong>
+<strong>Input Vector:</strong></p>
+<ul class="simple">
+<li><p><strong>Payment History:</strong></p>
+<ul>
+<li><p>Late Payments: Number of late payments, severity of lateness (30, 60, 90 days), and frequency of late payments.</p></li>
+</ul>
+</li>
+<li><p><strong>Account Activity:</strong></p>
+<ul>
+<li><p>Transaction Volume: Frequency and volume of transactions on credit accounts.</p></li>
+</ul>
+</li>
+<li><p><strong>Account Balances:</strong></p>
+<ul>
+<li><p>Total Debt</p></li>
+<li><p>Debt-to-Income Ratio</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p>Binary: Default, Non-default</p></li>
+</ul>
+</section>
+<section id="image-classification">
+<h3>Image classification<a class="headerlink" href="#image-classification" title="Link to this heading">#</a></h3>
+<p>Robots are one of the most used classification of images</p>
+<p>Baxter is a collaborative robot (cobot)
+it suitable for tasks such as material handling, machine tending, and light assembly.</p>
+<p>Rethink Robotics, was introduced in 2012. Baxter has a pair of cameras mounted in its head</p>
+<p><img alt="Baxter" src="../_images/Boxter_Robot.JPG" /></p>
+</section>
+</section>
+<section id="unsupervised-learning">
+<h2>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Link to this heading">#</a></h2>
+<p>Unsupervised learning techniques are specifically used for tasks such as <em>clustering</em> and <strong>data reduction</strong>, which help in discovering patterns and simplifying datasets without relying on labeled data.</p>
+<section id="text-clustering-news-aggregation">
+<h3>Text Clustering: News Aggregation<a class="headerlink" href="#text-clustering-news-aggregation" title="Link to this heading">#</a></h3>
+<p>Clustering in NLP involves grouping similar texts or documents together based on their content or features, without predefined labels. Group news articles into categories such as <strong>politics, sports, entertainment, and technology</strong>.</p>
+<p><em><strong>News API:</strong></em>
+A service that provides access to news articles from various sources and blogs.</p>
+<p>Features: Allows you to search for news articles, get headlines from different sources, and filter by date, language, and more.</p>
+<ul class="simple">
+<li><p><strong>Website:</strong> <a class="reference external" href="https://newsapi.org/">News API</a></p></li>
+</ul>
+<p>And other, such as,</p>
+<p><strong>ContextualWeb News API:</strong> <strong>Website:</strong> <a class="reference external" href="https://rapidapi.com/contextualwebsearch/api/web-search">ContextualWeb News API</a></p>
+<p><strong>GNews API:</strong> <strong>Website:</strong> <a class="reference external" href="https://gnews.io/docs/">GNews API</a></p>
+</section>
+<section id="zero-price-data">
+<h3>Zero Price Data<a class="headerlink" href="#zero-price-data" title="Link to this heading">#</a></h3>
+<p>Unlabeled data, or data available at zero cost, presents a valuable opportunity in machine learning and data-driven applications for several reasons:</p>
+<section id="benefits-of-unlabeled-data">
+<h4><strong>Benefits of Unlabeled Data</strong><a class="headerlink" href="#benefits-of-unlabeled-data" title="Link to this heading">#</a></h4>
+<p><img alt="Semisupervised Improve Knowledge" src="../_images/Semisupervised_ImproveKnowledge.JPG" /></p>
+<ol class="arabic simple">
+<li><p><strong>Abundance (frequency) and Availability</strong>:</p>
+<ul class="simple">
+<li><p><strong>Large Volumes</strong>: Unlabeled data is often available in large quantities, such as images from the internet, user-generated content, sensor data, or logs.</p></li>
+<li><p><strong>Accessibility</strong>: It can be easily collected and stored at minimal or no cost, making it a rich resource for analysis.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced Model Training</strong>:</p>
+<ul class="simple">
+<li><p><strong>Semi-Supervised Learning</strong>: Combining a small amount of labeled data with a large amount of unlabeled data can improve model performance. Techniques like self-training, co-training, and pseudo-labeling leverage unlabeled data to boost accuracy.</p></li>
+<li><p><strong>Representation Learning</strong>: Unlabeled data is crucial for pre-training models, especially in unsupervised or self-supervised learning paradigms. This helps in learning useful feature representations before fine-tuning with labeled data.</p></li>
+</ul>
+</li>
+<li><p><strong>Cost Efficiency</strong>:</p>
+<ul class="simple">
+<li><p><strong>Reduced Labeling Costs</strong>: Utilizing unlabeled data reduces the need for extensive and expensive labeling efforts. Active learning and other semi-supervised techniques make the most of the available labeled data.</p></li>
+<li><p><strong>Scalable Solutions</strong>: With the abundance of unlabeled data, scalable and automated solutions can be developed to process and utilize this data effectively.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="why-we-crawl-for-unlabeled-data">
+<h3><strong>Why We Crawl for Unlabeled Data</strong><a class="headerlink" href="#why-we-crawl-for-unlabeled-data" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Diverse and Rich Datasets</strong>:</p>
+<ul class="simple">
+<li><p><strong>Broad Coverage</strong>: Crawling the web or other sources for unlabeled data ensures a diverse and comprehensive dataset, which helps in training robust and generalizable models.</p></li>
+<li><p><strong>Real-World Applications</strong>: Accessing a wide variety of unlabeled data from different sources captures real-world variations and nuances, making the models more applicable in practical scenarios.</p></li>
+</ul>
+</li>
+<li><p><strong>Continuous Learning and Updating</strong>:</p>
+<ul class="simple">
+<li><p><strong>Dynamic Data</strong>: Crawling allows for the continuous collection of fresh data, which is essential for updating models to adapt to new trends and patterns.</p></li>
+<li><p><strong>Adaptive Models</strong>: Regularly incorporating new unlabeled data helps in keeping the models up-to-date and relevant.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Web Crawler</strong>
+also known as a web spider or web bot, is an automated program designed to systematically browse the internet and collect data from websites.</p>
+</section>
+<section id="unlabel-data-and-some-algorithms">
+<h3>Unlabel Data and some algorithms<a class="headerlink" href="#unlabel-data-and-some-algorithms" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generative Adversarial Networks</p></li>
+<li><p>Autoencoders</p></li>
+<li><p>Flow-based Models</p></li>
+<li><p>Diffusion Models</p></li>
+<li><p>Autoregressive Models</p></li>
+<li><p>Transformer-based Models</p></li>
+<li><p>Clustering based methos</p></li>
+</ul>
+<p><strong>Now, it’s time to discuss the example that used all types of algorithms, such as ChatGPT.</strong></p>
+</section>
+<section id="chatgpt">
+<h3>ChatGPT<a class="headerlink" href="#chatgpt" title="Link to this heading">#</a></h3>
+<p><em>The rate at which it is being utilized is so fast that it <strong>feels completely outdated</strong>.</em></p>
+<p><em><strong>ChatGPT</strong></em>
+The product of the well-known company OpenAI is based on Language Models. It understands the linguistic structure of a language and allows computers to work intelligently with that language. OpenAI began operations in 2015 and introduced its first research work in 2016 under the title Generative Pre-trained Transformer (GPT). ChatGPT is built on GPT-3, the third version of this tool, which has 175 billion parameters.
+Here are the headlines with years added for a clearer timeline:</p>
+<ol class="arabic simple">
+<li><p><strong>OpenAI’s Language Model Technology (Since 2015)</strong></p></li>
+<li><p><strong>OpenAI Introduces GPT (Generative Pre-trained Transformer): First Research Work (2016)</strong></p></li>
+<li><p><strong>ChatGPT Built on GPT-3 with 175 Billion Parameters (2020)</strong></p></li>
+<li><p><strong>ChatGPT supports a significant number of languages</strong> (English, Spanish, French, German, Chinese, Japanese, Korean, Italian, Portuguese, Dutch, Russian, Arabic, Turkish, Swedish, Danish, Norwegian, Finnish, Polish, Hungarian, Greek, Czech, Romanian, Hebrew, Thai)</p></li>
+</ol>
+<p><strong>Some of OpenAI’s products:</strong></p>
+<ol class="arabic simple">
+<li><p>DALL-E: The ability to generate images from text.</p></li>
+<li><p>Codex: Code generation in response to natural language (6 billion parameters and 800 million lines of code).</p></li>
+</ol>
+<p><strong>ChatGPT has various capabilities in working with texts, including the following well-known areas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Language Assistant:</strong> Tasks ranging from grammar and style checking, writing suggestions, to language translation.</p></li>
+<li><p><strong>Knowledge Acquisition:</strong> Answering questions on various topics, recent and historical events, scientific discoveries, and more.</p></li>
+<li><p><strong>Personalized Recommendations:</strong> Providing services and entertainment based on user analysis.</p></li>
+<li><p><strong>Chatbot and Virtual Assistant:</strong> Offering support and customer interaction.</p></li>
+<li><p><strong>Sentiment Analysis:</strong> Determining sentiment and detecting biases based on social media and online content.</p></li>
+<li><p><strong>Voice Assistant:</strong> Enabling device control and voice responses by integrating with voice assistants (understanding spoken language).</p></li>
+<li><p><strong>Education:</strong> Acting as a personal tutor, answering questions, and providing feedback on students’ texts.</p></li>
+</ol>
+<p>ChatGPT has been trained on a vast amount of data that includes various types of text, such as reviews, articles, posts, and chats. Importantly, among these texts, there are also different programming languages. Additionally, it encompasses <strong>website content, literature sources, poems, jokes, and scientific resources</strong>.</p>
+<p><strong>ChatGPT offers various features, including:</strong></p>
+<ol class="arabic simple">
+<li><p>Conversations</p></li>
+<li><p>Humor</p></li>
+<li><p>Poetry</p></li>
+<li><p>Code writing with debugging and explanations</p></li>
+<li><p>Story telling</p></li>
+<li><p>Resume creation</p></li>
+<li><p>Understanding and maintaining long-term conversations</p></li>
+<li><p>Generating scientific content across different fields</p></li>
+<li><p>Translating between multiple languages</p></li>
+<li><p>Various text-based applications</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Buildingblocks_AI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ModelTrainTest.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Training, Testing, Techniques</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amazing-note">Amazing Note:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-active-learning-is-useful"><strong>Why Active Learning is Useful</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit Scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-classification">Image classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-clustering-news-aggregation">Text Clustering: News Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-price-data">Zero Price Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-unlabeled-data"><strong>Benefits of Unlabeled Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-crawl-for-unlabeled-data"><strong>Why We Crawl for Unlabeled Data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unlabel-data-and-some-algorithms">Unlabel Data and some algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">ChatGPT</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr.Hadi Sadoghi Yazdi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 Pattern Recognition Lab.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

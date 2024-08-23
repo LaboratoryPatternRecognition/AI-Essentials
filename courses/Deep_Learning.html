@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deep Learning &#8212; Dr.Hadi Sadoghi Yazdi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/Deep_Learning';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ensemble, Fusion, Combining" href="EnsembleLearning.html" />
+    <link rel="prev" title="Training, Testing, Techniques" href="ModelTrainTest.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Home_Page.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-light" alt="Dr.Hadi Sadoghi Yazdi - Home"/>
+    <script>document.write(`<img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-dark" alt="Dr.Hadi Sadoghi Yazdi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Home_Page.html">
+                    Welcome to my personal Website!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Courses.html">Courses</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Whats_AI.html">AI Essentials: Applications Across Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Inside_AI.html">Inside AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Buildingblocks_AI.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModelTrainTest.html">Training, Testing, Techniques</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EnsembleLearning.html">Ensemble, Fusion, Combining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BayesianLearning_1.html">Bayesian Learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../Blog.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact_Me.html">Contact Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About_Me.html">About Me</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git/issues/new?title=Issue%20on%20page%20%2Fcourses/Deep_Learning.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courses/Deep_Learning.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deep Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inside-deep-neural-network">Inside Deep Neural Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wordnet">WordNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet">ImageNet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dream-and-art">Deep Dream and Art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-inside-surgery">Deep Inside surgery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-litte-carefull">Deep litte carefull</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-visualization">Feature-visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-input-x-excite-specific-layer">Which Input (X) Excite specific layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-feature-visualization-in-neural-networks">Understanding Feature Visualization in Neural Networks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deep-learning">
+<h1>Deep Learning<a class="headerlink" href="#deep-learning" title="Link to this heading">#</a></h1>
+<p>As we say, black box from perspective of function such as f(x)=ax+b only have two parameters also in chatGPT model have 175 billion parameters. compare and surprise. Now, show f(x) to form of Artificial Neural Network.</p>
+<p><img alt="ANN" src="../_images/Neuron.jpg" /></p>
+<p>Above figure show ANN with two input and in the real case input more than 2. Another ANN as shown in the following that f(x) related to n feaure of input.</p>
+<p><img alt="ANN2" src="../_images/ANN2.jpg" /></p>
+<p>for example ANN able to segment main image to some parts which name segment.</p>
+<p><img alt="Segmentation_ANN" src="../_images/Segmentation_ANN.jpg" /></p>
+<p>YOLO creat for object detection and classification. If we used YOLO architecture for image of mnist 28*28 in one case, it have 421642 parametrs</p>
+<p><img alt="Yolo_ObjectDetectionClassification" src="../_images/YOLO1.jpg" /></p>
+<p><strong>Deep neural networks (DNNs)</strong> significantly enhance image processing tasks like sharpening, enhancement, background subtraction, and substitution. Examples include:</p>
+<ol class="arabic simple">
+<li><p><strong>Image Sharpening</strong>: Convolutional neural networks (CNNs) such as SRCNN increase resolution and detail in images.</p></li>
+<li><p><strong>Image Enhancement</strong>: Techniques like Denoising Autoencoders (DAEs) and Generative Adversarial Networks (GANs) improve image quality by removing noise and enhancing features.</p></li>
+<li><p><strong>Background Subtraction</strong>: Networks like FgSegNet accurately segment and subtract the background in videos.</p></li>
+<li><p><strong>Background Substitution</strong>: Models like DeepLab and U-Net facilitate high-quality background replacement in images.</p></li>
+</ol>
+<p><img alt="Sardar1" src="../_images/Sardar1.JPG" /></p>
+<p><img alt="Sardar1_DeepAI1" src="../_images/Sardar1_1.jpg" /></p>
+<p><img alt="Sardar1_DeepAI2" src="../_images/Sardar1_2.jpg" /></p>
+<p><img alt="Sardar2" src="../_images/Sardar2.JPG" /></p>
+<p><img alt="Sardar2_AI1" src="../_images/Sardar2_1.png" /></p>
+<p><img alt="Sardar3" src="../_images/Sardar3.JPG" /></p>
+<p><img alt="Sardar3_AI1" src="../_images/Sardar3_Enhaunce_1.jpg" /></p>
+<p><img alt="ABooMahdi" src="../_images/Aboomahdi_main.jpg" /></p>
+<p><img alt="ABooMahdi_AI" src="../_images/Aboomahdi.png" /></p>
+<p><strong>A bit of fun</strong></p>
+<p><img alt="Main_Hadi" src="../_images/Hadi.jpg" /></p>
+<p><img alt="Hadi_Enhaunce" src="../_images/Hadi-denoised_sharpened.jpg" /></p>
+<p><strong>Change Background</strong></p>
+<p><img alt="MainHadi" src="../_images/hadisadoghiyazdi.jpg" /></p>
+<p><img alt="Hadi_Background" src="../_images/hadisadoghiyazdiBackground.jpg" /></p>
+<p><img alt="FireMan" src="../_images/FireMan.jpg" /></p>
+<section id="inside-deep-neural-network">
+<h2>Inside Deep Neural Network<a class="headerlink" href="#inside-deep-neural-network" title="Link to this heading">#</a></h2>
+<p>The emphasized part of the image, which the neural network focuses on for animal classification using the ResNet network trained on ImageNet.</p>
+<p><img alt="InsideDeep1" src="../_images/Resnet_Trained_ImageNet_Animal.JPG" /></p>
+<section id="wordnet">
+<h3><a class="reference external" href="https://en.wikipedia.org/wiki/WordNet">WordNet</a><a class="headerlink" href="#wordnet" title="Link to this heading">#</a></h3>
+<p>The database contains 155,327 words organized in 175,979 synsets (sets of cognitive synonyms) for a total of 207,016 word-sense pairs; in compressed form, it is about 12 megabytes in size.</p>
+<p><img alt="Example WordNet" src="../_images/WordNetExample_1.JPG" /></p>
+<p><strong>Related Forms and Semantic Relations:</strong></p>
+<p>Synonyms: glad, joyful, jubilant</p>
+<p>Antonyms: sad, unhappy, sorrowful</p>
+<p>Related Words: elated, cheerful, blissful, delighted</p>
+<p>Hypernyms (more general terms): emotional, feeling</p>
+<p>Hyponyms (more specific terms): blissful, euphoric, overjoyed</p>
+</section>
+<section id="imagenet">
+<h3><a class="reference external" href="https://www.image-net.org/">ImageNet</a><a class="headerlink" href="#imagenet" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://ieeexplore.ieee.org/document/5206848">ImageNet</a> is an image dataset organized according to the WordNet hierarchy average 1000 images to illustrate each synset. ImageNet-21k contains 14,197,122 annotated images divided into 21,841 classes</p>
+</section>
+</section>
+<section id="deep-dream-and-art">
+<h2>Deep Dream and Art<a class="headerlink" href="#deep-dream-and-art" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://deepdreamgenerator.com/">DeepDream</a></p>
+<p><img alt="DeepDream1" src="../_images/DeepDream1.JPG" /></p>
+<p><img alt="DeepDream1" src="../_images/DeepDream2.JPG" /></p>
+<p><img alt="DeepDream1" src="../_images/DeepDream3.JPG" /></p>
+<p><img alt="DeepDream1" src="../_images/DeepDream4.JPG" /></p>
+</section>
+<section id="deep-inside-surgery">
+<h2>Deep Inside surgery<a class="headerlink" href="#deep-inside-surgery" title="Link to this heading">#</a></h2>
+</section>
+<section id="deep-litte-carefull">
+<h2>Deep litte carefull<a class="headerlink" href="#deep-litte-carefull" title="Link to this heading">#</a></h2>
+<p>A deep neural network effectively acts as an <strong>information distillation pipeline</strong>, with raw data going in (in this case, RGB pictures) and being repeatedly transformed so that irrelevant information is filtered out (for example, the specific visual appearance of the image), and
+useful information is magnified and refined (for example, the class of the image).</p>
+<p><img alt="Distillation" src="../_images/Distillation.jpg" /></p>
+<p><strong><em>There are a few things to note here:</em></strong></p>
+<ul class="simple">
+<li><p>The first layer acts as a collection of various edge detectors. At that stage, the activations retain almost all of the information present in the initial picture. As you go deeper, the activations become increasingly abstract and less visually interpretable. They begin to encode higher-level concepts such as “cat ear” and “cat eye.”</p></li>
+<li><p>Deeper presentations carry increasingly less information about the visual contents of the image, and increasingly more information related to the class of the image.</p></li>
+<li><p>The sparsity of the activations increases with the depth of the layer: in the first layer, almost all filters are activated by the input image, but in the following layers, more and more filters are blank. This means the pattern encoded by the filter isn’t found in the input image.</p></li>
+</ul>
+</section>
+<section id="feature-visualization">
+<h2>Feature-visualization<a class="headerlink" href="#feature-visualization" title="Link to this heading">#</a></h2>
+<p>Similar to <strong>Brain Mapping</strong></p>
+<ul class="simple">
+<li><p>Areas of the brain that control various functions of the body by stimulating specific points of the brain</p></li>
+</ul>
+<p><img alt="Brain Mapping" src="../_images/BrainMapping.JPG" /></p>
+<p><strong>Functional Areas:</strong> The map highlights which regions of the brain control various functions, such as movement, sensation, speech, and vision.</p>
+<p><img alt="Brain Mapping Illustration" src="../_images/BrainMap_1.JPG" /></p>
+<p>VGG16 A Type Of Deep
+<img alt="VGG16" src="../_images/VGG16.JPG" /></p>
+<p>for Xception model</p>
+<p><img alt="Cat" src="../_images/cat.JPG" /></p>
+<p><img alt="CatFilter" src="../_images/FirstLayer_Fifth_Filter.JPG" /></p>
+<section id="which-input-x-excite-specific-layer">
+<h3>Which Input (X) Excite specific layer<a class="headerlink" href="#which-input-x-excite-specific-layer" title="Link to this heading">#</a></h3>
+<p><strong>Response</strong> :Feature Visualization</p>
+<p>Second Channel is excited optimality using this pattern</p>
+<p><img alt="ExcitedSecondChannel" src="../_images/Pattern_secondChannel_RespondsMaximally.JPG" /></p>
+<p>Block 4 Conv 1 is excited optimality by:</p>
+<p><img alt="Block4_Conv1" src="../_images/block4_sepconv1.JPG" /></p>
+<p>GoogLeNet trained on the ImageNet.</p>
+<p><img alt="GoogleNet_ImageNet" src="../_images/GoogleNet_ImageNet.JPG" /></p>
+<p>Type of neural network and the data it is trained on significantly affect feature visualization.</p>
+</section>
+<section id="understanding-feature-visualization-in-neural-networks">
+<h3>Understanding Feature Visualization in Neural Networks<a class="headerlink" href="#understanding-feature-visualization-in-neural-networks" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Feature visualization in neural networks is a method for exploring the internal mechanisms of deep neural networks.</p></li>
+<li><p>Method: Identifying an input that maximizes the output of a specific layer, we can define the optimization as finding an input that maximizes a target layer’s output.</p></li>
+<li><p>This approach allows us to understand what kind of stimuli activate particular points within the intricate structure of the deep network.</p></li>
+<li><p>Deeper layers often respond to input concepts that are more abstract and closer to human interpretation, indicating that these deep points are triggered by inputs with richer semantic meaning.</p></li>
+<li><p><strong>Fusion</strong> of Simultaneous Layers: Optimal Way to Specific Input Leading to DeepDream</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ModelTrainTest.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Training, Testing, Techniques</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="EnsembleLearning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ensemble, Fusion, Combining</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inside-deep-neural-network">Inside Deep Neural Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wordnet">WordNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet">ImageNet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dream-and-art">Deep Dream and Art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-inside-surgery">Deep Inside surgery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-litte-carefull">Deep litte carefull</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-visualization">Feature-visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-input-x-excite-specific-layer">Which Input (X) Excite specific layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-feature-visualization-in-neural-networks">Understanding Feature Visualization in Neural Networks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr.Hadi Sadoghi Yazdi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 Pattern Recognition Lab.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

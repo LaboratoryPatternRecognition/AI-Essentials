@@ -1,0 +1,1282 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Training, Testing, Techniques &#8212; Dr.Hadi Sadoghi Yazdi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/ModelTrainTest';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Learning" href="Deep_Learning.html" />
+    <link rel="prev" title="Algorithm" href="Algorithm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Home_Page.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-light" alt="Dr.Hadi Sadoghi Yazdi - Home"/>
+    <script>document.write(`<img src="../_static/Hadi_Sadoghi_Yazdi.png" class="logo__image only-dark" alt="Dr.Hadi Sadoghi Yazdi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Home_Page.html">
+                    Welcome to my personal Website!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Courses.html">Courses</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Whats_AI.html">AI Essentials: Applications Across Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Inside_AI.html">Inside AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Buildingblocks_AI.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Algorithm.html">Algorithm</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Training, Testing, Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Learning.html">Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EnsembleLearning.html">Ensemble, Fusion, Combining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BayesianLearning_1.html">Bayesian Learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../Blog.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact_Me.html">Contact Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About_Me.html">About Me</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/h-sadoghi/dr-sadoghi.git/issues/new?title=Issue%20on%20page%20%2Fcourses/ModelTrainTest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courses/ModelTrainTest.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Training, Testing, Techniques</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-techniques-and-fields-outline">AI Techniques and Fields Outline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">Natural Language Processing (NLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ingredients-of-nlp">Ingredients of NLP</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-word2vec-example-with-gensim">Simple Word2Vec Example with Gensim</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">Image Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chernoff-faces">Chernoff Faces:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="training-testing-techniques">
+<h1>Training, Testing, Techniques<a class="headerlink" href="#training-testing-techniques" title="Link to this heading">#</a></h1>
+<p>Before discussing, it’s important to note that AI is widely used across various scientific fields, each employing different tools to enhance research and applications.</p>
+<p>List of scientific fields with corresponding AI tools commonly used:</p>
+<ol class="arabic">
+<li><p><strong>Biology and Bioinformatics</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://deepmind.google/technologies/alphafold/">AlphaFold</a></p></li>
+</ul>
+<p><img alt="GoogleDeepMindAlphaFold" src="../_images/GoogleDeepMind.JPG" /></p>
+<ul class="simple">
+<li><p><strong>Description:</strong> Predicts protein structures from amino acid sequences.</p></li>
+</ul>
+</li>
+<li><p><strong>Chemistry</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://www.amsterdamsciencepark.nl/event/chemai/">ChemAI</a></p></li>
+</ul>
+<p><img alt="Chem_AI" src="../_images/ChemAI.JPG" /></p>
+<ul class="simple">
+<li><p><strong>Description:</strong> Uses machine learning to predict chemical reactions and properties.</p></li>
+</ul>
+</li>
+<li><p><strong>Medicine and Healthcare</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://www.ibm.com/industries/healthcare">IBM Watson Health</a></p></li>
+<li><p><strong>Description:</strong> Analyzes medical data to assist in diagnostics and treatment planning.</p></li>
+</ul>
+</li>
+<li><p><strong>Astronomy</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://www.astroml.org/">AstroML</a></p></li>
+<li><p><strong>Description:</strong> Machine learning for analyzing astronomical data.</p></li>
+</ul>
+</li>
+<li><p><strong>Environmental Science</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://climate.ai/">ClimateAI</a></p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="ClimateAI" src="../_images/ClimateAI.JPG" /></p>
+<ul class="simple">
+<li><p><strong>Description:</strong> Predicts climate changes and environmental impacts using AI.</p></li>
+</ul>
+<ol class="arabic" start="6">
+<li><p><strong>Neuroscience</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://www.nest-simulator.org/">NEST (Neural Simulation Tool)</a></p></li>
+<li><p><strong>Description:</strong> Simulates large networks of spiking neurons for brain research.</p></li>
+</ul>
+</li>
+<li><p><strong>Genomics</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> DeepVariant</p></li>
+<li><p><strong>Description:</strong> Uses deep learning to call genetic variants from sequencing data.</p></li>
+</ul>
+</li>
+<li><p><strong>Material Science</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://hackingmaterials.lbl.gov/matminer/">Matminer</a></p></li>
+</ul>
+<p><img alt="MatMiner" src="../_images/MatMinser.JPG" /></p>
+<ul class="simple">
+<li><p><strong>Description:</strong> Facilitates data mining for material properties and predictions.</p></li>
+</ul>
+</li>
+<li><p><strong>Economics and Finance</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://h2o.ai/">H2O.ai</a></p></li>
+<li><p><strong>Description:</strong> Machine learning platform for financial modeling and predictions.</p></li>
+</ul>
+</li>
+<li><p><strong>Agriculture</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://farm.bot/?dt_id=1270938%3Bap%3A567268&amp;amp;gad_source=1&amp;amp;gclid=Cj0KCQjwkdO0BhDxARIsANkNcrei2xqTXfIfOU0tZu23T-eos00wQ-f3Ia4p2_iyhlNXNWMkcFFGKWgaAjZ8EALw_wcB">FarmBot</a></p></li>
+<li><p><strong>Description:</strong> Uses AI to automate and optimize agricultural practices.</p></li>
+</ul>
+</li>
+<li><p><strong>Linguistics</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> GPT-4</p></li>
+<li><p><strong>Description:</strong> Language model for natural language processing tasks.</p></li>
+</ul>
+</li>
+<li><p><strong>Geology</strong></p>
+<ul class="simple">
+<li><p><strong>Tool:</strong> <a class="reference external" href="https://earth-ai.com/">EarthAI</a></p></li>
+<li><p><strong>Description:</strong> AI-driven exploration for mineral deposits and geological formations.</p></li>
+</ul>
+</li>
+</ol>
+<section id="training">
+<h2>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
+<p>Training is the process of teaching the model to recognize patterns and make predictions by using a dataset. During training, the model learns by adjusting its parameters to minimize the difference between its predictions and the actual outcomes.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<p>Testing evaluates the model’s performance on a separate, unseen dataset, known as the test set. Testing involves running the model on the test data and comparing its predictions to the actual outcomes to measure accuracy, precision, recall, and other performance metrics.</p>
+<p><img alt="Training_Testing" src="../_images/TrainingTesting.jpg" /></p>
+<p><strong>Why might a score of 18 be better than a 20?</strong>
+<strong>Understanding Overfitting in Student Assessments: Memorization vs. Deep Understanding</strong>
+Overfitting in student assessments can be likened to memorization versus deep learning. A student scoring 18 may demonstrate a deeper understanding and application of knowledge compared to a student scoring 20, who might have excelled through rote memorization. Memorization might lead to higher test scores but does not always reflect genuine comprehension. Thus, a score of 18 could indicate a more profound grasp of the subject compared to a perfect score of 20, which might not necessarily signify a deeper understanding. Evaluations should account for both memorization and true comprehension to accurately reflect a student’s abilities.</p>
+</section>
+<section id="ai-techniques-and-fields-outline">
+<h2>AI Techniques and Fields Outline<a class="headerlink" href="#ai-techniques-and-fields-outline" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Natural Language Processing (NLP)</strong></p>
+<ul class="simple">
+<li><p>Understanding and Generating Human Language</p></li>
+</ul>
+</li>
+<li><p><strong>Computer Vision</strong></p>
+<ul class="simple">
+<li><p>Interpreting Visual Information from Images and Videos</p></li>
+</ul>
+</li>
+<li><p><strong>Machine Learning (ML)</strong></p>
+<ul class="simple">
+<li><p>Learning from Data to Make Predictions or Decisions</p></li>
+</ul>
+</li>
+<li><p><strong>Deep Learning</strong></p>
+<ul class="simple">
+<li><p>Modeling Complex Patterns with Deep Neural Networks</p></li>
+</ul>
+</li>
+<li><p><strong>Robotics</strong></p>
+<ul class="simple">
+<li><p>Designing and Building Autonomous or Semi-Autonomous Machines</p></li>
+</ul>
+</li>
+<li><p><strong>Reinforcement Learning</strong></p>
+<ul class="simple">
+<li><p>Learning through Rewards and Penalties</p></li>
+</ul>
+</li>
+<li><p><strong>Planning and Scheduling</strong></p>
+<ul class="simple">
+<li><p>Creating Action Sequences and Allocating Resources</p></li>
+</ul>
+</li>
+<li><p><strong>Knowledge Representation and Reasoning</strong></p>
+<ul class="simple">
+<li><p>Encoding Information and Drawing Conclusions</p></li>
+</ul>
+</li>
+<li><p><strong>AI Ethics and Fairness</strong></p>
+<ul class="simple">
+<li><p>Ensuring Ethical and Fair Use of AI Systems</p></li>
+</ul>
+</li>
+<li><p><strong>Swarm Intelligence</strong></p>
+<ul class="simple">
+<li><p>Utilizing Collective Behavior for Problem Solving</p></li>
+</ul>
+</li>
+<li><p><strong>Process Mining</strong></p>
+<ul class="simple">
+<li><p>Analyzing Business Processes Using Event Data</p></li>
+</ul>
+</li>
+<li><p><strong>Speech Processing</strong></p>
+<ul class="simple">
+<li><p>Analyzing and Synthesizing Human Speech</p></li>
+</ul>
+</li>
+<li><p><strong>Anomaly Detection</strong></p>
+<ul class="simple">
+<li><p>Identifying Outliers and Abnormal Patterns in Data</p></li>
+</ul>
+</li>
+<li><p><strong>Recommendation Systems</strong></p>
+<ul class="simple">
+<li><p>Providing Personalized Suggestions Based on User Data</p></li>
+</ul>
+</li>
+<li><p><strong>Generative Models</strong></p>
+<ul class="simple">
+<li><p>Creating New Data Samples from Existing Data (e.g., GANs)</p></li>
+</ul>
+</li>
+<li><p><strong>Human-Computer Interaction (HCI)</strong></p>
+<ul class="simple">
+<li><p>User Interface Design: Creating Intuitive Interfaces for User Interaction Enhancing User  Experience: Designing Interactions Between Humans and AI Systems</p></li>
+</ul>
+</li>
+<li><p><strong>Internet of Things (IoT)</strong></p>
+<ul class="simple">
+<li><p>Smart Devices: Integrating AI with IoT Devices for Intelligent Behavior Connected Systems: Enabling Communication and Coordination Among Devices</p></li>
+</ul>
+</li>
+<li><p><strong>Explainable AI (XAI)</strong></p>
+<ul class="simple">
+<li><p>Model Interpretability: Techniques for Making AI Models’ Decisions Transparent (e.g., LIME, SHAP)</p></li>
+<li><p>Visualization Tools: Tools for Visualizing and Interpreting AI Models’ Behavior</p></li>
+</ul>
+</li>
+<li><p><strong>Augmented Reality (AR) and Virtual Reality (VR)</strong></p>
+<ul class="simple">
+<li><p>AI in AR/VR: Enhancing Experiences with Object Recognition and Immersive Simulations</p></li>
+<li><p>Metaverse Integration: Leveraging AI for Virtual Worlds and Augmented Experiences</p></li>
+</ul>
+</li>
+</ol>
+<section id="natural-language-processing-nlp">
+<h3>Natural Language Processing (NLP)<a class="headerlink" href="#natural-language-processing-nlp" title="Link to this heading">#</a></h3>
+<p><strong>Definition:</strong><br />
+Natural Language Processing (NLP) : understand, interpret, and generate human language
+<strong>NLP can be used to each fields of science !!</strong></p>
+<section id="ingredients-of-nlp">
+<h4>Ingredients of NLP<a class="headerlink" href="#ingredients-of-nlp" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Tokenization</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Breaking down text into individual units, such as words, phrases, or symbols, called tokens.</p></li>
+<li><p><strong>Example:</strong> Breaking the sentence “NLP is fascinating!” into tokens: [“NLP”, “is”, “fascinating”, “!”].</p></li>
+</ul>
+</li>
+<li><p><strong>Lemmatization</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Reducing words to their base or root form (lemma) to ensure that different forms of the word are treated as the same.</p></li>
+<li><p><strong>Example:</strong> The words “running,” “ran,” and “runs” are all reduced to the lemma “run.”</p></li>
+</ul>
+</li>
+<li><p><strong>Stemming</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Trimming words to their root form by removing prefixes or suffixes.</p></li>
+<li><p><strong>Example:</strong> “running” and “runner” might both be reduced to “run.”</p></li>
+</ul>
+</li>
+<li><p><strong>Part-of-Speech (POS) Tagging</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Identifying the grammatical category of each word in a sentence, such as nouns, verbs, adjectives, etc.</p></li>
+<li><p><strong>Example:</strong> In the sentence “The cat sat on the mat,” POS tagging might label “cat” as a noun and “sat” as a verb.</p></li>
+</ul>
+</li>
+<li><p><strong>Named Entity Recognition (NER)</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Identifying and classifying named entities in text into predefined categories like person names, locations, organizations, dates, etc.</p></li>
+<li><p><strong>Example:</strong> In the sentence “Apple Inc. is based in Cupertino,” NER might identify “Apple Inc.” as an organization and “Cupertino” as a location.</p></li>
+</ul>
+</li>
+<li><p><strong>Parsing</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Analyzing the grammatical structure of a sentence to understand the relationships between words and phrases.</p></li>
+<li><p><strong>Example:</strong> Parsing “The quick brown fox jumps over the lazy dog” to determine the syntactic structure.</p></li>
+</ul>
+</li>
+<li><p><strong>Sentiment Analysis</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Determining the emotional tone or sentiment expressed in a piece of text, such as positive, negative, or neutral.</p></li>
+<li><p><strong>Example:</strong> Input: “I love Sardar Soleimani” Output: Positive</p></li>
+</ul>
+</li>
+<li><p><strong>Machine Translation</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Automatically translating text from one language to another.</p></li>
+<li><p><strong>Example:</strong> Translating “Hello, how are you?” from English to French as “Bonjour, comment ça va?”</p></li>
+</ul>
+</li>
+<li><p><strong>Text Summarization</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Creating a concise summary of a longer text while preserving key information and meaning.</p></li>
+<li><p><strong>Example:</strong> Summarizing a news article into a few sentences capturing the main points.</p></li>
+</ul>
+</li>
+<li><p><strong>Word Embeddings</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Representing words as vectors in a continuous vector space to capture semantic meanings and relationships.</p></li>
+<li><p><strong>Example:</strong> Using embeddings like Word2Vec or GloVe to represent “king” and “queen” in a vector space where their relationship is captured.</p></li>
+</ul>
+</li>
+<li><p><strong>Deep Learning in NLP</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Utilizing neural networks with multiple layers to model complex patterns in text data.</p></li>
+<li><p><strong>Example:</strong></p>
+<ul>
+<li><p><strong>Recurrent Neural Networks (RNNs):</strong> Handling sequences of text, such as in language modeling or machine translation.</p></li>
+<li><p><strong>Transformers:</strong> Models like BERT and GPT that capture long-range dependencies and contextual meanings in text.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="simple-word2vec-example-with-gensim">
+<h3>Simple Word2Vec Example with Gensim<a class="headerlink" href="#simple-word2vec-example-with-gensim" title="Link to this heading">#</a></h3>
+<p><strong>Word2Vec</strong> is a deep learning algorithm that generates <em>vector representations</em> of words by training on a large corpus of text, capturing semantic similarities based on the context in which words appear.
+<em><strong>Word2Vec is a powerful feature extractor for natural language processing tasks</strong></em></p>
+<p>For the Persian language, you can read this site. It explains <a class="reference external" href="https://data-hub.ir/%D8%A7%D9%84%DA%AF%D9%88%D8%B1%DB%8C%D8%AA%D9%85-word2vec-%DA%86%DB%8C%D8%B3%D8%AA/">word2vec</a> in Farsi.</p>
+<p><strong>Example Sentence:</strong>
+“In nature, flowers bloom beautifully, adding color and joy to the peaceful surroundings of the outdoors.”</p>
+<p><strong>Sliding Window Size: 3</strong>
+We will extract examples where each target word is predicted based on its surrounding context words.</p>
+<p><strong>Training Data Table</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Target Word</p></th>
+<th class="head"><p>Context Words (Input)</p></th>
+<th class="head"><p>Example Input (<code class="docutils literal notranslate"><span class="pre">x</span></code>)</p></th>
+<th class="head"><p>Example Output (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>flowers</p></td>
+<td><p>In, nature</p></td>
+<td><p>[“In”, “nature”]</p></td>
+<td><p>flowers</p></td>
+</tr>
+<tr class="row-odd"><td><p>flowers</p></td>
+<td><p>nature, bloom</p></td>
+<td><p>[“nature”, “bloom”]</p></td>
+<td><p>flowers</p></td>
+</tr>
+<tr class="row-even"><td><p>bloom</p></td>
+<td><p>nature, flowers</p></td>
+<td><p>[“nature”, “flowers”]</p></td>
+<td><p>bloom</p></td>
+</tr>
+<tr class="row-odd"><td><p>bloom</p></td>
+<td><p>flowers, beautifully</p></td>
+<td><p>[“flowers”, “beautifully”]</p></td>
+<td><p>bloom</p></td>
+</tr>
+<tr class="row-even"><td><p>beautifully</p></td>
+<td><p>flowers, bloom</p></td>
+<td><p>[“flowers”, “bloom”]</p></td>
+<td><p>beautifully</p></td>
+</tr>
+<tr class="row-odd"><td><p>beautifully</p></td>
+<td><p>bloom, adding</p></td>
+<td><p>[“bloom”, “adding”]</p></td>
+<td><p>beautifully</p></td>
+</tr>
+<tr class="row-even"><td><p>adding</p></td>
+<td><p>bloom, beautifully</p></td>
+<td><p>[“bloom”, “beautifully”]</p></td>
+<td><p>adding</p></td>
+</tr>
+<tr class="row-odd"><td><p>adding</p></td>
+<td><p>beautifully, color</p></td>
+<td><p>[“beautifully”, “color”]</p></td>
+<td><p>adding</p></td>
+</tr>
+<tr class="row-even"><td><p>color</p></td>
+<td><p>beautifully, adding</p></td>
+<td><p>[“beautifully”, “adding”]</p></td>
+<td><p>color</p></td>
+</tr>
+<tr class="row-odd"><td><p>color</p></td>
+<td><p>adding, and</p></td>
+<td><p>[“adding”, “and”]</p></td>
+<td><p>color</p></td>
+</tr>
+<tr class="row-even"><td><p>and</p></td>
+<td><p>adding, color</p></td>
+<td><p>[“adding”, “color”]</p></td>
+<td><p>and</p></td>
+</tr>
+<tr class="row-odd"><td><p>and</p></td>
+<td><p>color, joy</p></td>
+<td><p>[“color”, “joy”]</p></td>
+<td><p>and</p></td>
+</tr>
+<tr class="row-even"><td><p>joy</p></td>
+<td><p>color, and</p></td>
+<td><p>[“color”, “and”]</p></td>
+<td><p>joy</p></td>
+</tr>
+<tr class="row-odd"><td><p>joy</p></td>
+<td><p>and, to</p></td>
+<td><p>[“and”, “to”]</p></td>
+<td><p>joy</p></td>
+</tr>
+<tr class="row-even"><td><p>to</p></td>
+<td><p>and, joy</p></td>
+<td><p>[“and”, “joy”]</p></td>
+<td><p>to</p></td>
+</tr>
+<tr class="row-odd"><td><p>to</p></td>
+<td><p>joy, the</p></td>
+<td><p>[“joy”, “the”]</p></td>
+<td><p>to</p></td>
+</tr>
+<tr class="row-even"><td><p>the</p></td>
+<td><p>joy, to</p></td>
+<td><p>[“joy”, “to”]</p></td>
+<td><p>the</p></td>
+</tr>
+<tr class="row-odd"><td><p>the</p></td>
+<td><p>to, peaceful</p></td>
+<td><p>[“to”, “peaceful”]</p></td>
+<td><p>the</p></td>
+</tr>
+<tr class="row-even"><td><p>peaceful</p></td>
+<td><p>to, the</p></td>
+<td><p>[“to”, “the”]</p></td>
+<td><p>peaceful</p></td>
+</tr>
+<tr class="row-odd"><td><p>peaceful</p></td>
+<td><p>the, surroundings</p></td>
+<td><p>[“the”, “surroundings”]</p></td>
+<td><p>peaceful</p></td>
+</tr>
+<tr class="row-even"><td><p>surroundings</p></td>
+<td><p>the, peaceful</p></td>
+<td><p>[“the”, “peaceful”]</p></td>
+<td><p>surroundings</p></td>
+</tr>
+<tr class="row-odd"><td><p>surroundings</p></td>
+<td><p>peaceful, of</p></td>
+<td><p>[“peaceful”, “of”]</p></td>
+<td><p>surroundings</p></td>
+</tr>
+<tr class="row-even"><td><p>of</p></td>
+<td><p>peaceful, surroundings</p></td>
+<td><p>[“peaceful”, “surroundings”]</p></td>
+<td><p>of</p></td>
+</tr>
+<tr class="row-odd"><td><p>of</p></td>
+<td><p>surroundings, the</p></td>
+<td><p>[“surroundings”, “the”]</p></td>
+<td><p>of</p></td>
+</tr>
+<tr class="row-even"><td><p>the</p></td>
+<td><p>surroundings, of</p></td>
+<td><p>[“surroundings”, “of”]</p></td>
+<td><p>the</p></td>
+</tr>
+<tr class="row-odd"><td><p>the</p></td>
+<td><p>of, outdoors</p></td>
+<td><p>[“of”, “outdoors”]</p></td>
+<td><p>the</p></td>
+</tr>
+<tr class="row-even"><td><p>outdoors</p></td>
+<td><p>of, the</p></td>
+<td><p>[“of”, “the”]</p></td>
+<td><p>outdoors</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The input and output are fed into the model, and after the model is trained, the ‘black box’ can predict words related to the input word.</p>
+<p><img alt="BlackBox" src="../_images/BlackBox.JPG" /></p>
+</section>
+</section>
+<section id="computer-vision">
+<h2>Computer vision<a class="headerlink" href="#computer-vision" title="Link to this heading">#</a></h2>
+<p>Computer Vision allows computers to “see” and understand images or videos. It involves techniques that enable machines to process, analyze, and make sense of visual data.</p>
+<section id="image-processing">
+<h3>Image Processing<a class="headerlink" href="#image-processing" title="Link to this heading">#</a></h3>
+<p>We started with image processing by looking at examples of digit recognition. First, what is a digit from the perspective of a camera? As shown below, each image we see is in the form of a matrix that affects the cells in our eyes. Similarly, a camera functions like an eye. The output of the camera is a matrix that looks as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+
+<span class="c1"># Load the MNIST dataset using scikit-learn</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># Print the shapes of the datasets</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data shape: </span><span class="si">{</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Labels shape: </span><span class="si">{</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of a single image: </span><span class="si">{</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Function to display a small part of the image and its pixel matrix</span>
+<span class="k">def</span> <span class="nf">display_digit_and_matrix</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="c1"># Extract the small part of the image</span>
+    <span class="n">top</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">top_left</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="n">top</span> <span class="o">+</span> <span class="n">size</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">size</span>
+    <span class="n">small_part</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">top</span><span class="p">:</span><span class="n">bottom</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    
+    <span class="c1"># Display the original image</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Digit: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display the small part of the image</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">small_part</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pixel Matrix (</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Print pixel values of the small part</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pixel values of the small part:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">small_part</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Define parameters for the small part of the image</span>
+<span class="n">top_left</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Top-left corner of the small part</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Size of the small part (10x10)</span>
+
+<span class="c1"># Display the first image in the dataset with a small part</span>
+<span class="n">display_digit_and_matrix</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have 70,000 digit images, each of which is 28x28 pixels. We directly feed them to the learning module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="c1"># Load the MNIST dataset</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Split the dataset into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Initialize the Gaussian Naive Bayes classifier</span>
+<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># Train the classifier</span>
+<span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict on the test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Compute accuracy</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute confusion matrix</span>
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Display confusion matrix</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix for MNIST Digit Recognition using Gaussian Naive Bayes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.55
+</pre></div>
+</div>
+<img alt="../_images/6be7f83451e96abaa1e1f23201e33499ee0ac17acdc96112d95307f182fa6c28.png" src="../_images/6be7f83451e96abaa1e1f23201e33499ee0ac17acdc96112d95307f182fa6c28.png" />
+</div>
+</div>
+<p>We see an accuracy of 0.55, or an error rate of 45%. This is a problem we must address by selecting suitable features and a machine learning model that yields better results.</p>
+<p>With a change of model, we obtained 76% accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="c1"># Load the MNIST dataset</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Split the dataset into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Apply PCA for feature extraction</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Reduce to 10 components for faster computation</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Initialize the SGDClassifier</span>
+<span class="n">sgd</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Train the classifier</span>
+<span class="n">sgd</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict on the test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">sgd</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">)</span>
+
+<span class="c1"># Compute accuracy</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute confusion matrix</span>
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Display confusion matrix</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">sgd</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix for MNIST Digit Recognition using SGD with PCA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.76
+</pre></div>
+</div>
+<img alt="../_images/8ac799aa38d8265d8d6c89e41afdd85b0e8fcb126618fd6b9dd0e7c19ff4edd7.png" src="../_images/8ac799aa38d8265d8d6c89e41afdd85b0e8fcb126618fd6b9dd0e7c19ff4edd7.png" />
+</div>
+</div>
+</section>
+<section id="machine-learning">
+<h3>Machine learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h3>
+<p>Machine learning can be understood from the perspective of function estimation, where the goal is to find a function <span class="math notranslate nohighlight">\( f \)</span> that best maps input data <span class="math notranslate nohighlight">\( x \)</span> to output data <span class="math notranslate nohighlight">\( y \)</span>. This is similar to fitting a function in traditional regression analysis, such as a linear function <span class="math notranslate nohighlight">\( f(x) = ax + b \)</span>.
+Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( a \)</span> is the slope of the line.</p></li>
+<li><p><span class="math notranslate nohighlight">\( b \)</span> is the y-intercept.
+a , b are estimated by machine learning module.</p></li>
+</ul>
+<p>Simple example:</p>
+<p>Assume that we have the price of gold per gram and we estimate the price of oil using a linear function <span class="math notranslate nohighlight">\( f(x) = ax + b \)</span>. We have 20 samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Step 1: Generate synthetic data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># For reproducibility</span>
+<span class="n">gold_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># Gold prices in some unit</span>
+<span class="n">true_a</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># True slope</span>
+<span class="n">true_b</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># True intercept</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">gold_price</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Random noise</span>
+<span class="n">oil_price</span> <span class="o">=</span> <span class="n">true_a</span> <span class="o">*</span> <span class="n">gold_price</span> <span class="o">+</span> <span class="n">true_b</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># Linear relationship with noise</span>
+
+<span class="c1"># Step 2: Estimate the parameters using linear regression</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">gold_price</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">gold_price</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">estimated_a</span><span class="p">,</span> <span class="n">estimated_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">oil_price</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Step 3: Visualize the original data and the estimated linear function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gold_price</span><span class="p">,</span> <span class="n">oil_price</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gold_price</span><span class="p">,</span> <span class="n">estimated_a</span> <span class="o">*</span> <span class="n">gold_price</span> <span class="o">+</span> <span class="n">estimated_b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estimated Linear Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gold Price (per gram)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Oil Price (estimated)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gold Price vs. Estimated Oil Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated parameters: a = </span><span class="si">{</span><span class="n">estimated_a</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">estimated_b</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6f8eb9c1feacf127cea716e2af6b4d6e51adb03d6ba13b8121f0d8abdd0febea.png" src="../_images/6f8eb9c1feacf127cea716e2af6b4d6e51adb03d6ba13b8121f0d8abdd0febea.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated parameters: a = 1.39, b = 15.69
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the case of the MNIST dataset, each image is represented as a vector of 784 elements (28x28 pixels). One of the tools in machine learning is visualization. For visualization purposes, in the following example, we reduce the 784-dimensional data to 2 dimensions using a subset of 200 samples. This reduction results in some loss of information, and the remaining features may not effectively distinguish between classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Load MNIST dataset</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># For demonstration, use a smaller subset of the data</span>
+<span class="n">X_subset</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>  <span class="c1"># Take first 2000 samples for quicker plotting</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
+
+<span class="c1"># Standardize the data</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_subset</span><span class="p">)</span>
+
+<span class="c1"># Apply PCA to reduce dimensions from 784 to 2</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+
+<span class="c1"># Plot the 2D PCA result</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_subset</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Digit Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2D PCA of MNIST Digits&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4663db83a16bbce8f17b489f085f83f999087fbdedf63644ce826fe93733d6a3.png" src="../_images/4663db83a16bbce8f17b489f085f83f999087fbdedf63644ce826fe93733d6a3.png" />
+</div>
+</div>
+<p>Chernoff Faces is method for data visualization.</p>
+</section>
+<section id="chernoff-faces">
+<h3>Chernoff Faces:<a class="headerlink" href="#chernoff-faces" title="Link to this heading">#</a></h3>
+<p>This technique represents multivariate data using facial features. Each variable corresponds to a different facial feature (e.g., eyes, nose, mouth), allowing for the visualization of complex datasets in a human-understandable format. ( see <a class="reference external" href="https://gist.github.com/aflaxman/4043086">https://gist.github.com/aflaxman/4043086</a>). Also you can use <a class="reference external" href="https://pypi.org/project/ChernoffFace/">https://pypi.org/project/ChernoffFace/</a></p>
+<p>Results:
+<img alt="chernof face" src="../_images/Chernof_1.JPG" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Algorithm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Algorithm</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Deep_Learning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-techniques-and-fields-outline">AI Techniques and Fields Outline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">Natural Language Processing (NLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ingredients-of-nlp">Ingredients of NLP</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-word2vec-example-with-gensim">Simple Word2Vec Example with Gensim</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">Image Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chernoff-faces">Chernoff Faces:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr.Hadi Sadoghi Yazdi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 Pattern Recognition Lab.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

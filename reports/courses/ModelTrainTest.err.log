@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dr\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "D:\Sadoghi\Course\AI\.WhatsAI\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import fetch_openml
+
+# Load the MNIST dataset using scikit-learn
+mnist = fetch_openml('mnist_784', version=1)
+images = mnist.data.to_numpy().reshape(-1, 28, 28)
+labels = mnist.target.astype(int).to_numpy()
+
+# Print the shapes of the datasets
+print(f"Data shape: {images.shape}")
+print(f"Labels shape: {labels.shape}")
+print(f"Shape of a single image: {images[0].shape}")
+
+# Function to display a small part of the image and its pixel matrix
+def display_digit_and_matrix(image, label, top_left, size):
+    # Extract the small part of the image
+    top, left = top_left
+    bottom = top + size
+    right = left + size
+    small_part = image[top:bottom, left:right]
+
+    plt.figure(figsize=(12, 6))
+    
+    # Display the original image
+    plt.subplot(1, 2, 1)
+    plt.imshow(image, cmap='gray')
+    plt.title(f"Digit: {label}")
+    plt.axis('off')
+
+    # Display the small part of the image
+    plt.subplot(1, 2, 2)
+    plt.imshow(small_part, cmap='gray', vmin=0, vmax=255)
+    plt.title(f"Pixel Matrix ({size}x{size})")
+    plt.axis('off')
+    
+    # Print pixel values of the small part
+    print("Pixel values of the small part:")
+    print(small_part)
+    
+    plt.show()
+
+# Define parameters for the small part of the image
+top_left = (10, 10)  # Top-left corner of the small part
+size = 10  # Size of the small part (10x10)
+
+# Display the first image in the dataset with a small part
+display_digit_and_matrix(images[0], labels[0], top_left, size)
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m fetch_openml
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+
